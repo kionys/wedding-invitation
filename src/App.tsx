@@ -1,12 +1,15 @@
+import { IWedding } from '@models/wedding';
+import FullScreenMessage from '@shared/full-screen-message';
 import classNames from 'classnames/bind';
 import { useEffect, useState } from 'react';
 import styles from './App.module.scss';
-import FullScreenMessage from './components/shared/full-screen-message';
+import Heading from './components/sections/heading';
+import Video from './components/sections/video';
 
 const cx = classNames.bind(styles);
 
 function App() {
-  const [wedding, setWedding] = useState(null);
+  const [wedding, setWedding] = useState<IWedding | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
@@ -33,13 +36,23 @@ function App() {
       });
   }, []);
 
-  if (loading === false) {
+  if (loading) {
     return <FullScreenMessage type="loading" />;
   }
   if (error) {
     return <FullScreenMessage type="error" />;
   }
-  return <div className={cx('container')}>{JSON.stringify(wedding)}</div>;
+  if (wedding === null) {
+    return null;
+  }
+  const { date } = wedding;
+  return (
+    <div className={cx('container')}>
+      {JSON.stringify(wedding)}
+      <Heading date={date} />
+      <Video />
+    </div>
+  );
 }
 
 export default App;
