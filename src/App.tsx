@@ -48,9 +48,9 @@ function App() {
   const { date } = wedding;
   return (
     <div className={cx('container')}>
-      {JSON.stringify(wedding)}
       <Heading date={date} />
       <Video />
+      {JSON.stringify(wedding)}
     </div>
   );
 }
