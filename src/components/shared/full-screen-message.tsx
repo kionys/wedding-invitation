@@ -19,6 +19,7 @@ const FullScreenMessage = ({ type }: FullScreenMessageProps) => {
     </div>
   );
 };
+//https://www.iconfinder.com/icons/5172567/heart_like_love_icon
 const IconHeart = () => {
   return (
     <svg
@@ -36,6 +37,7 @@ const IconHeart = () => {
     </svg>
   );
 };
+//https://www.iconfinder.com/search?q=error
 const IconError = () => {
   return (
     <svg
