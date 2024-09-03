@@ -4,6 +4,7 @@ import classNames from 'classnames/bind';
 import { useEffect, useState } from 'react';
 import styles from './App.module.scss';
 import Heading from './components/sections/heading';
+import ImageGallery from './components/sections/image-gallery';
 import Video from './components/sections/video';
 
 const cx = classNames.bind(styles);
@@ -45,11 +46,12 @@ function App() {
   if (wedding === null) {
     return null;
   }
-  const { date } = wedding;
+  const { date, galleryImages } = wedding;
   return (
     <div className={cx('container')}>
       <Heading date={date} />
       <Video />
+      <ImageGallery images={galleryImages} />
       {JSON.stringify(wedding)}
     </div>
   );
