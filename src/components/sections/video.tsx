@@ -8,11 +8,11 @@ const Video = () => {
   return (
     <Section className={cx('container')}>
       <video
-        autoPlay={false}
+        autoPlay={true}
         muted={true}
         loop={true}
-        controls={true}
-        poster={'/assets/images/wedding_07.jpg'}
+        // controls={true}
+        poster={'/assets/poster.jpg'}
       >
         <source src="/assets/main.mp4" type="video/mp4" />
       </video>
