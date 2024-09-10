@@ -3,6 +3,7 @@ import FullScreenMessage from '@shared/full-screen-message';
 import classNames from 'classnames/bind';
 import { useEffect, useState } from 'react';
 import styles from './App.module.scss';
+import Calendar from './components/sections/calendar';
 import Heading from './components/sections/heading';
 import ImageGallery from './components/sections/image-gallery';
 import { Intro } from './components/sections/intro';
@@ -69,6 +70,7 @@ function App() {
       />
       <Invitation message={invitation} />
       <ImageGallery images={galleryImages} />
+      <Calendar date={date} />
       {JSON.stringify(wedding)}
     </div>
   );
