@@ -1,5 +1,7 @@
 import { Fragment } from 'react';
 
+const styles = { fontSize: '17px' };
+
 const Text = ({ children }: { children: string }) => {
   const message = children.split('\n').map((str, i, array) => {
     return (
@@ -10,6 +12,6 @@ const Text = ({ children }: { children: string }) => {
     );
   });
 
-  return <div>{message}</div>;
+  return <div style={styles}>{message}</div>;
 };
 export default Text;

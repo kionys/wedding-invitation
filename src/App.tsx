@@ -59,19 +59,21 @@ function App() {
   } = wedding;
   return (
     <div className={cx('container')}>
-      <Heading date={date} />
-      <Video />
-      <Intro
-        groomName={groom.name}
-        brideName={bride.name}
-        locationName={location.name}
-        date={date}
-        message={intro}
-      />
-      <Invitation message={invitation} />
-      <ImageGallery images={galleryImages} />
-      <Calendar date={date} />
-      {JSON.stringify(wedding)}
+      <div className={cx('display')}>
+        <Heading date={date} />
+        <Video />
+        <Intro
+          groomName={groom.name}
+          brideName={bride.name}
+          locationName={location.name}
+          date={date}
+          message={intro}
+        />
+        <Invitation message={invitation} />
+        <ImageGallery images={galleryImages} />
+        <Calendar date={date} />
+        {JSON.stringify(wedding)}
+      </div>
     </div>
   );
 }
