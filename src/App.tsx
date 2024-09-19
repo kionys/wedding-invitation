@@ -8,6 +8,7 @@ import Heading from './components/sections/heading';
 import ImageGallery from './components/sections/image-gallery';
 import { Intro } from './components/sections/intro';
 import { Invitation } from './components/sections/invitation';
+import KaKaoMap from './components/sections/map';
 import Video from './components/sections/video';
 
 const cx = classNames.bind(styles);
@@ -72,6 +73,7 @@ function App() {
         <Invitation message={invitation} />
         <ImageGallery images={galleryImages} />
         <Calendar date={date} />
+        <KaKaoMap location={location} />
         {JSON.stringify(wedding)}
       </div>
     </div>
