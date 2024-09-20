@@ -4,6 +4,7 @@ import classNames from 'classnames/bind';
 import { useEffect, useState } from 'react';
 import styles from './App.module.scss';
 import Calendar from './components/sections/calendar';
+import Contact from './components/sections/contact';
 import Heading from './components/sections/heading';
 import ImageGallery from './components/sections/image-gallery';
 import { Intro } from './components/sections/intro';
@@ -74,6 +75,7 @@ function App() {
         <ImageGallery images={galleryImages} />
         <Calendar date={date} />
         <KaKaoMap location={location} />
+        <Contact groom={groom} bride={bride} />
         {JSON.stringify(wedding)}
       </div>
     </div>
