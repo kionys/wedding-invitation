@@ -10,6 +10,7 @@ import ImageGallery from './components/sections/image-gallery';
 import { Intro } from './components/sections/intro';
 import { Invitation } from './components/sections/invitation';
 import KaKaoMap from './components/sections/map';
+import Share from './components/sections/share';
 import Video from './components/sections/video';
 
 const cx = classNames.bind(styles);
@@ -76,7 +77,8 @@ function App() {
         <Calendar date={date} />
         <KaKaoMap location={location} />
         <Contact groom={groom} bride={bride} />
-        {JSON.stringify(wedding)}
+        <Share groomName={groom.name} brideName={bride.name} date={date} />
+        {/* {JSON.stringify(wedding)} */}
       </div>
     </div>
   );
