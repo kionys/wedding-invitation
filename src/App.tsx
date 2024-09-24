@@ -12,6 +12,7 @@ import { Invitation } from './components/sections/invitation';
 import KaKaoMap from './components/sections/map';
 import Share from './components/sections/share';
 import Video from './components/sections/video';
+import Modal from './components/shared/modal';
 
 const cx = classNames.bind(styles);
 
@@ -78,6 +79,21 @@ function App() {
         <KaKaoMap location={location} />
         <Contact groom={groom} bride={bride} />
         <Share groomName={groom.name} brideName={bride.name} date={date} />
+        <Modal
+          open={true}
+          title="현재 참석자"
+          body={
+            <div>
+              <input />
+            </div>
+          }
+          onLeftButtonClick={() => {
+            window.alert('닫기');
+          }}
+          onRightButtonClick={() => {
+            window.alert('확인');
+          }}
+        />
         {/* {JSON.stringify(wedding)} */}
       </div>
     </div>
