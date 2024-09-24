@@ -1,48 +1,38 @@
-import classNames from 'classnames';
+import classNames from 'classnames/bind';
 import { format, parseISO } from 'date-fns';
 import { ko } from 'date-fns/locale';
-
 import { useEffect } from 'react';
-import Section from '../shared/section';
 import styles from './share.module.scss';
+
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import Section from '../shared/section';
 
 declare global {
   interface Window {
     Kakao: any;
   }
 }
+
 interface IPropsShare {
   groomName: string;
   brideName: string;
   date: string;
 }
+
 const cx = classNames.bind(styles);
 
-const Share = ({ groomName, brideName, date }: IPropsShare) => {
+function Share({ groomName, brideName, date }: IPropsShare) {
   useEffect(() => {
     const script = document.createElement('script');
-    script.src = 'https://t1.kakaocdn.net/kakao_js_sdk/2.7.2/kakao.min.js';
+    script.src = 'https://t1.kakaocdn.net/kakao_js_sdk/2.3.0/kakao.min.js';
     script.async = true;
-    script.defer = true;
 
     document.head.appendChild(script);
 
     script.onload = () => {
-      if (window.Kakao && window.Kakao.maps) {
-        window.Kakao.maps.load(() => {
-          // isInitialized  : sdk가 사용할 준비가 되었는가 = boolean
-          // init           :  kakao를 사용할 준비를 해준다.
-
-          // isInitialized로 sdk를 사용할 준비를 확인하고 초기화가 되어있지않다면 초기화를 해준다.
-          if (!window.Kakao.isInitialized()) {
-            window.Kakao.init(process.env.REACT_APP_KAKAO_APP_KEY);
-          }
-        });
+      if (!window.Kakao.isInitialized()) {
+        window.Kakao.init(process.env.REACT_APP_KAKAO_APP_KEY);
       }
-    };
-    // clean-up
-    return () => {
-      document.head.removeChild(script);
     };
   }, []);
 
@@ -72,24 +62,30 @@ const Share = ({ groomName, brideName, date }: IPropsShare) => {
       ],
     });
   };
+
   return (
     <Section title="공유하기">
-      <div>
+      <div className={cx('wrap-share')}>
         <button onClick={handleShareKakao}>
-          s
+          공유
           <IconKakao />
         </button>
-        <button>
-          <IconClipboard />
-        </button>
+        <CopyToClipboard
+          text={window.location.origin}
+          onCopy={() => {
+            window.alert('복사가 완료되었습니다.');
+          }}
+        >
+          <button>
+            <IconClipboard />
+          </button>
+        </CopyToClipboard>
       </div>
     </Section>
   );
-};
+}
 
-export default Share;
-
-const IconKakao = () => {
+function IconKakao() {
   return (
     <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
       <title />
@@ -105,9 +101,9 @@ const IconKakao = () => {
       </g>
     </svg>
   );
-};
+}
 
-const IconClipboard = () => {
+function IconClipboard() {
   return (
     <svg enable-background="new 0 0 48 48" version="1.1" viewBox="0 0 48 48">
       <path
@@ -117,4 +113,6 @@ const IconClipboard = () => {
       />
     </svg>
   );
-};
+}
+
+export default Share;
