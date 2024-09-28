@@ -3,6 +3,7 @@ import FullScreenMessage from '@shared/full-screen-message';
 import classNames from 'classnames/bind';
 import { useEffect, useState } from 'react';
 import styles from './App.module.scss';
+import AttendCountModal from './components/attend-count-modal';
 import Calendar from './components/sections/calendar';
 import Contact from './components/sections/contact';
 import Heading from './components/sections/heading';
@@ -12,7 +13,6 @@ import { Invitation } from './components/sections/invitation';
 import KaKaoMap from './components/sections/map';
 import Share from './components/sections/share';
 import Video from './components/sections/video';
-import Modal from './components/shared/modal';
 
 const cx = classNames.bind(styles);
 
@@ -79,7 +79,8 @@ function App() {
         <KaKaoMap location={location} />
         <Contact groom={groom} bride={bride} />
         <Share groomName={groom.name} brideName={bride.name} date={date} />
-        <Modal
+        <AttendCountModal wedding={wedding} />
+        {/* <Modal
           open={true}
           title="현재 참석자"
           body={
@@ -93,7 +94,7 @@ function App() {
           onRightButtonClick={() => {
             window.alert('확인');
           }}
-        />
+        /> */}
         {/* {JSON.stringify(wedding)} */}
       </div>
     </div>
