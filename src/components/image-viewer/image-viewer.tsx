@@ -32,7 +32,11 @@ export const ImageViewer = ({
         {images?.map((src, i) => {
           return (
             <SwiperSlide key={i}>
-              <img src={src} alt="이미지 뷰어" />
+              {/* picture 태그로 이미지 성능 최적화 */}
+              <picture>
+                <source srcSet={`${src}.webp`} type="image/webp" />
+                <img src={`${src}.jpg`} alt="사진첩 이미지" />
+              </picture>
             </SwiperSlide>
           );
         })}
